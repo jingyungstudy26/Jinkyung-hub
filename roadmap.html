@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0E0B18">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="비전보드 · 인생 로드맵">
+<title>비전보드 · 인생 로드맵</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' font-size='76'%3E🗺️%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0E0B18;
+    --accent:#A78BFA;
+    --accent2:#F472B6;
+    --ink:#F5F7FA;
+    --muted:#9AA6B8;
+    --line:rgba(255,255,255,.10);
+    --card:rgba(255,255,255,.045);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(120% 70% at 15% -10%, color-mix(in srgb, var(--accent) 34%, transparent) 0%, transparent 60%),
+      radial-gradient(110% 65% at 95% 5%, color-mix(in srgb, var(--accent2) 22%, transparent) 0%, transparent 55%),
+      var(--bg);
+    background-attachment:fixed;
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:calc(18px + env(safe-area-inset-top)) 18px calc(18px + env(safe-area-inset-bottom));
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{width:100%;max-width:380px}
+  .back{
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;
+    padding:8px 12px;border:1px solid var(--line);border-radius:999px;
+    background:rgba(255,255,255,.03);margin-bottom:22px;
+  }
+  .back:active{transform:scale(.97)}
+  .badge{
+    width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:30px;
+    background:linear-gradient(140deg, var(--accent), var(--accent2));
+    box-shadow:0 14px 34px -12px color-mix(in srgb, var(--accent) 85%, transparent);
+    margin-bottom:16px;
+  }
+  h1{font-size:23px;line-height:1.3;margin:0 0 6px;letter-spacing:-.4px;font-weight:800}
+  .sub{margin:0 0 22px;color:var(--muted);font-size:14px;line-height:1.5}
+  form{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:22px;padding:18px;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 24px 60px -30px #000;
+  }
+  .lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+  input[type=password]{
+    width:100%;padding:15px 16px;border-radius:14px;border:1px solid var(--line);
+    background:rgba(0,0,0,.35);color:var(--ink);
+    font-size:22px;font-weight:800;letter-spacing:.42em;text-align:center;
+    outline:none;transition:border-color .16s, box-shadow .16s;
+  }
+  input[type=password]::placeholder{color:#4D586B;letter-spacing:.2em;font-size:15px;font-weight:600}
+  input[type=password]:focus{border-color:color-mix(in srgb, var(--accent) 70%, transparent);box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent)}
+  .chk{display:flex;align-items:center;gap:9px;margin:14px 2px 0;font-size:13px;color:var(--muted)}
+  .chk input{width:17px;height:17px;accent-color:var(--accent);margin:0}
+  .note{margin:7px 2px 0;font-size:11.5px;line-height:1.45;color:#6E7B8F}
+  button{
+    width:100%;margin-top:16px;padding:15px 16px;border:0;border-radius:14px;
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    color:#fff;font-size:16px;font-weight:800;letter-spacing:-.2px;
+    box-shadow:0 12px 26px -14px color-mix(in srgb, var(--accent) 90%, transparent);
+  }
+  button:active{transform:scale(.985)}
+  button[disabled]{opacity:.6}
+  .msg{margin:10px 0 0;min-height:18px;font-size:13px;text-align:center;color:#FF8A8A;font-weight:600}
+  .msg.ok{color:#7BE3B0}
+  .foot{margin:22px 0 0;text-align:center;font-size:11px;color:#5A6577;letter-spacing:.02em}
+  .shake{animation:sh .34s}
+  @keyframes sh{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+  .spin{display:inline-block;width:15px;height:15px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:7px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  #boot{position:fixed;inset:0;display:none;place-items:center;background:var(--bg);z-index:9;color:var(--muted);font-size:13px;gap:10px}
+  #boot.on{display:grid}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./index.html">← 허브</a>
+  <div class="badge">🗺️</div>
+  <h1>비전보드 · 인생 로드맵</h1>
+  <p class="sub">비전, 타임라인, 목표 기록</p>
+  <form id="f" autocomplete="off" novalidate>
+    <label class="lbl" for="pw">비밀번호</label>
+    <input id="pw" type="password" inputmode="numeric" enterkeyhint="go" maxlength="12"
+           placeholder="숫자 6자리" autocomplete="current-password" autocapitalize="off" spellcheck="false">
+    <label class="chk"><input type="checkbox" id="remember"> 이 기기에서 24시간 기억</label>
+    <p class="note">공용 기기에서는 체크하지 마세요. 끄면 앱을 닫을 때 다시 잠깁니다.</p>
+    <button type="submit" id="go">열기</button>
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  </form>
+  <p class="foot">AES-256-GCM · PBKDF2-SHA256 · GitHub Pages</p>
+</div>
+<div id="boot"><span class="spin"></span> 잠금 해제 중…</div>
+<script>
+(function () {
+  const META_URL = 'assets/roadmap.json';
+  const PAGE = 'roadmap';
+  const SKEY = 'jh.session.' + PAGE;
+  const LKEY = 'jh.remember.' + PAGE;
+  const REMEMBER_MS = 24 * 60 * 60 * 1000;
+
+  const $ = (s) => document.querySelector(s);
+  const pwEl = $('#pw'), msgEl = $('#msg'), goEl = $('#go'), remEl = $('#remember'), form = $('#f');
+  let meta = null, busy = false;
+
+  const b64d = (s) => {
+    const bin = atob(s), u = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    return u;
+  };
+  const b64e = (buf) => {
+    const b = new Uint8Array(buf);
+    let s = '';
+    for (let i = 0; i < b.length; i++) s += String.fromCharCode(b[i]);
+    return btoa(s);
+  };
+
+  async function getMeta() {
+    if (!meta) {
+      const r = await fetch(META_URL, { cache: 'no-store' });
+      if (!r.ok) throw new Error('payload ' + r.status);
+      meta = await r.json();
+    }
+    return meta;
+  }
+
+  async function deriveKey(pw, m) {
+    const base = await crypto.subtle.importKey(
+      'raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: b64d(m.salt), iterations: m.iter, hash: 'SHA-256' },
+      base, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
+  }
+
+  async function decryptWith(key, m) {
+    const buf = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64d(m.iv) }, key, b64d(m.data));
+    return new TextDecoder('utf-8').decode(buf);
+  }
+
+  async function importRaw(rawB64) {
+    const raw = b64d(rawB64);
+    if (raw.length !== 32) throw new Error('bad key');
+    return crypto.subtle.importKey('raw', raw, { name: 'AES-GCM' }, true, ['decrypt']);
+  }
+
+  function render(html) {
+    document.open();
+    document.write(html);
+    document.close();
+  }
+
+  function setBusy(on, text) {
+    busy = on;
+    goEl.disabled = on;
+    if (text) msgEl.className = 'msg';
+    if (text !== undefined) msgEl.textContent = text || '';
+    if (on) goEl.innerHTML = '<span class="spin"></span>여는 중…';
+    else goEl.textContent = '열기';
+  }
+
+  function fail(text) {
+    msgEl.className = 'msg';
+    msgEl.textContent = text;
+    pwEl.value = '';
+    form.classList.remove('shake');
+    void form.offsetWidth;
+    form.classList.add('shake');
+    pwEl.focus();
+  }
+
+  function readRemember() {
+    try {
+      const raw = localStorage.getItem(LKEY);
+      if (!raw) return null;
+      const o = JSON.parse(raw);
+      if (!o || !o.k || !o.exp || o.exp < Date.now()) { localStorage.removeItem(LKEY); return null; }
+      return o.k;
+    } catch (e) { return null; }
+  }
+
+  async function unlockWithRaw(rawB64) {
+    const m = await getMeta();
+    const key = await importRaw(rawB64);
+    const html = await decryptWith(key, m);
+    render(html);
+  }
+
+  async function submit() {
+    if (busy) return;
+    const pw = pwEl.value.trim();
+    if (!pw) { pwEl.focus(); return; }
+    setBusy(true, '');
+    try {
+      const m = await getMeta();
+      const key = await deriveKey(pw, m);
+      const html = await decryptWith(key, m);
+      const raw = b64e(await crypto.subtle.exportKey('raw', key));
+      try { sessionStorage.setItem(SKEY, raw); } catch (e) {}
+      if (remEl.checked) {
+        try { localStorage.setItem(LKEY, JSON.stringify({ k: raw, exp: Date.now() + REMEMBER_MS })); } catch (e) {}
+      } else {
+        try { localStorage.removeItem(LKEY); } catch (e) {}
+      }
+      render(html);
+    } catch (e) {
+      setBusy(false, '');
+      fail('비밀번호가 맞지 않아요');
+    }
+  }
+
+  form.addEventListener('submit', (ev) => { ev.preventDefault(); submit(); });
+  pwEl.addEventListener('input', () => {
+    if (pwEl.value.length === 6) submit();
+  });
+
+  // already unlocked in this session (reload) or remembered on this device
+  (async function boot() {
+    if (!('crypto' in window) || !crypto.subtle) {
+      msgEl.textContent = '이 브라우저에서는 열 수 없어요. https 주소로 접속해 주세요.';
+      return;
+    }
+    let raw = null;
+    try { raw = sessionStorage.getItem(SKEY); } catch (e) {}
+    if (!raw) raw = readRemember();
+    if (!raw) { pwEl.focus(); return; }
+    document.getElementById('boot').classList.add('on');
+    try { await unlockWithRaw(raw); }
+    catch (e) {
+      try { sessionStorage.removeItem(SKEY); localStorage.removeItem(LKEY); } catch (er) {}
+      document.getElementById('boot').classList.remove('on');
+      pwEl.focus();
+    }
+  })();
+})();
+</script>
+</body>
+</html>

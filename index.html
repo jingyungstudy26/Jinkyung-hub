@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A0E16">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="진경 허브">
+<title>진경 허브</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' font-size='76'%3E✨%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --accent:#3B82F6;--accent2:#22D3EE;--violet:#A78BFA;--pink:#F472B6;
+    --ink:#F5F7FA;--muted:#98A4B6;--line:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{
+    margin:0;min-height:100dvh;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+    background:
+      radial-gradient(120% 60% at 10% -10%, rgba(59,130,246,.30) 0%, transparent 60%),
+      radial-gradient(110% 55% at 95% 0%, rgba(167,139,250,.24) 0%, transparent 55%),
+      #0A0E16;
+    background-attachment:fixed;
+    padding:calc(30px + env(safe-area-inset-top)) 20px calc(26px + env(safe-area-inset-bottom));
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:420px;margin:0 auto}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 10px}
+  h1{margin:0 0 8px;font-size:28px;line-height:1.25;letter-spacing:-.7px;font-weight:800}
+  .lede{margin:0 0 26px;color:var(--muted);font-size:14px;line-height:1.55}
+  a.card{
+    display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;
+    padding:18px;border-radius:22px;border:1px solid var(--line);margin-bottom:14px;
+    background:linear-gradient(160deg, rgba(255,255,255,.075), rgba(255,255,255,.028));
+    box-shadow:0 20px 44px -30px #000;
+    transition:transform .14s ease, border-color .14s ease;
+  }
+  a.card:active{transform:scale(.985)}
+  .ic{
+    width:52px;height:52px;flex:0 0 52px;border-radius:16px;display:grid;place-items:center;font-size:25px;
+  }
+  .ic.blue{background:linear-gradient(140deg,#3B82F6,#22D3EE);box-shadow:0 12px 26px -14px rgba(59,130,246,.9)}
+  .ic.violet{background:linear-gradient(140deg,#A78BFA,#F472B6);box-shadow:0 12px 26px -14px rgba(167,139,250,.9)}
+  .txt{flex:1;min-width:0}
+  .t{font-size:16.5px;font-weight:800;letter-spacing:-.3px;margin:0 0 3px}
+  .d{margin:0;font-size:12.5px;color:var(--muted);line-height:1.45}
+  .lock{font-size:17px;opacity:.5;padding-left:2px}
+  .hint{
+    margin:24px 0 0;padding:14px 16px;border-radius:16px;border:1px dashed var(--line);
+    font-size:12px;line-height:1.6;color:#8C99AC;background:rgba(255,255,255,.02);
+  }
+  .hint b{color:#B9C4D4;font-weight:700}
+  .foot{margin:22px 0 0;text-align:center;font-size:11px;color:#55607200;color:#556072}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">My Life Hub</p>
+  <h1>진경의 생활 허브</h1>
+  <p class="lede">두 개의 페이지 모두 비밀번호로 잠겨 있어요. 열 때 6자리만 입력하면 됩니다.</p>
+
+  <a class="card" href="./moneybook.html">
+    <span class="ic blue">💰</span>
+    <span class="txt">
+      <span class="t">머니북 1억 가계부</span>
+      <span class="d">이번 달 생활비 · 소비 분석 · 1억 로드맵</span>
+    </span>
+    <span class="lock">🔒</span>
+  </a>
+
+  <a class="card" href="./roadmap.html">
+    <span class="ic violet">🗺️</span>
+    <span class="txt">
+      <span class="t">비전보드 인생 로드맵</span>
+      <span class="d">비전 · 타임라인 · 목표와 기록</span>
+    </span>
+    <span class="lock">🔒</span>
+  </a>
+
+  <p class="hint">
+    📱 <b>홈 화면에 추가</b>하면 앱처럼 바로 열 수 있어요.<br>
+    안드로이드 크롬: 오른쪽 위 ⋮ → <b>홈 화면에 추가</b><br>
+    아이폰 사파리: 공유 → <b>홈 화면에 추가</b><br>
+    잠금 화면의 <b>24시간 기억</b>은 공용 기기에서 체크하지 마세요.
+  </p>
+  <p class="foot">AES-256-GCM 암호화 · GitHub Pages</p>
+</div>
+</body>
+</html>
