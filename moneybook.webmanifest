@@ -1,0 +1,25 @@
+{
+  "name": "머니북 · 1억 가계부",
+  "short_name": "머니북",
+  "start_url": "./moneybook.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B1220",
+  "theme_color": "#3B82F6",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "assets/icon-moneybook-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-moneybook-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
